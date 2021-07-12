@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Qrcode</title>
+</head>
+<style type="text/css">
+	img{
+		width: 200px;
+		height: 200px;
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-260%,-96%);
+		
+	}
+	div{
+		top: 50%;
+		left: 50%;
+		transform: translate(35%,50%);
+	}
+</style>
+<body>
+	<div>
+	
+		{% if data%}
+		<p><b style="color: red;">Name :</b> {{data.name}}</p>
+		<p><b style="color: red;">Email Id :</b>  {{data.email}}</p>
+		<p><b style="color: red;">Address :</b> {{data.address}}</p>
+		<p><b style="color: red;">DOB :</b> {{data.dob}}</p>
+		<p><b style="color: red;">Phone : </b>{{data.phone}}</p>
+	{% endif%}
+{% if img%}
+		<img src="{% static 'qrcode/qrcode.png' %}" width="30%" height="30%">
+		
+	{% endif%}
+</div>
+</body>
+</html>

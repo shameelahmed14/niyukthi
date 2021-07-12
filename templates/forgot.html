@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+    <title>Niyukthi</title>
+
+    <!-- Favicons -->
+    <link href="{% static '/img/logo.png' %}" rel="icon" />
+    <link href="{% static '/img/logo.png' %}" rel="apple-touch-icon" />
+ 
+	<link rel="stylesheet" type="text/css" href="{% static 'css_login/style_login.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<img class="wave" src="{% static 'img_login/wave.png' %}">
+	<div class="container">
+		<div class="img">
+		<!-- 	<img src="img/bg.svg"> -->
+		</div>
+		<div class="login-content">
+			<form action="/postReset/" method="post">
+           {% csrf_token %}
+				<img src="{% static 'img_login/avatar.svg' %}">
+				<h2 class="title">Reset Password</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+           		   <div class="div">
+           		   		<h5>Phone Number</h5>
+           		   		<input name="phone" type="text" >
+           		   </div>
+           		</div>
+           		
+            	<input type="submit" class="btn" value="Send Reset OTP">
+              
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js_login/main.js' %}"></script>
+</body>
+</html>

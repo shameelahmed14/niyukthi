@@ -1,0 +1,1210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>NIYUKTHI</title>
+  <meta content="The Appointment Scheduling Application" name="description">
+  <meta content="The Appointment Scheduling Application" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static '/img/logo.png' %}" rel="icon">
+  <link href="{% static '/img/logo.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static '/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static '/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static '/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static '/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static '/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static '/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static '/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static '/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Varshini's JS link for Madal -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
+ 
+
+   <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+  <!-- Template Main CSS File -->
+  <link href="{% static '/css/style.css' %}" rel="stylesheet">
+  <!-- <link href="{% static '/css/modal_style.css' %}" rel="stylesheet"> -->
+  <!-- =======================================================
+  * Template Name: Medicio - v4.0.1
+  * Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+ <script data-main="scripts/app" src="C:/Users/HP/Desktop/NIYUKTHI/NiyukthiDjango_new/NiyukthiDjango_new/node_modules/twilio/index.js"></script>
+<style>
+.counts .count-box{
+  margin-bottom: 20px;
+  text-align: center;
+}
+.counts .count-box .title {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 18px;
+  position: relative;
+  padding-bottom: 15px;
+  
+}
+
+.counts .count-box .title::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #3fbbc0;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+
+#counts .btn-get-started {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  color: black;
+  background: rgba(205,235,227,.5);
+  cursor: pointer;
+}
+
+#counts .btn-get-started:hover {
+  background: rgba(188, 230, 218, 0.5);
+}
+
+/* modal style begin */
+/add full-width input fields/
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+}
+/* set a style for all buttons*/
+
+/set styles for the cancel button/
+.cancelbtn{
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline;
+  padding: 14px 32px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  color:  #fff;
+  background: #3fbbc0;
+
+}
+
+.signupbtn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline;
+  padding: 14px 32px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  color:  #fff;
+  background: #3fbbc0;
+ 
+}
+
+/float cancel and signup buttons and add an equal width/
+
+/add padding to container elements/
+/* .container {
+  padding: 16px;
+} */
+/define the modal’s background/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+/define the modal-content background/
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 80%;
+}
+/define the close button/
+
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  color:  #fff;
+  font-size: 40px;
+  font-weight: bold;  
+}
+/define the close hover and focus effects/
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 300px) {
+  .cancelbtn,
+  .signupbtn {
+    width: 100%;
+  }
+
+}
+/* modal style end */
+/* datepicker begin */
+
+.container-fluid {
+    padding-top: 120px !important;
+    padding-bottom: 120px !important
+}
+
+.card {
+    box-shadow: 0px 4px 8px 0px #3fbbc0
+}
+
+input {
+    padding: 10px 20px !important;
+    /* border: 1px solid #000 !important; */
+    border-radius: 10px;
+    box-sizing: border-box;
+    /* background-color: #616161 !important; */
+    /* color: #fff !important; */
+    font-size: 16px;
+    letter-spacing: 1px;
+    width: 30px
+}
+
+input:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #3fbbc0;
+    outline-width: 0
+}
+
+::placeholder {
+    color: black;
+    opacity: 1
+}
+
+:-ms-input-placeholder {
+    color: black
+}
+
+::-ms-input-placeholder {
+    color: black
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+#dp1 {
+  display: inline;
+  width: 200px;
+
+  padding-top: 20px;
+
+}
+.datepicker {
+    background-color: white !important;
+    color:black !important;
+    border: none;
+    padding: 10px !important
+}
+
+.datepicker-dropdown:after {
+    border-bottom: 6px solid white
+}
+
+thead tr:nth-child(3) th {
+    color: black !important;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 10px
+}
+
+.dow,
+.old-day,
+.day,
+.new-day {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 0px !important
+}
+
+.old-day:hover,
+.day:hover,
+.new-day:hover,
+.month:hover,
+.year:hover,
+.decade:hover,
+.century:hover {
+    border-radius: 6px !important;
+    background-color:black;
+    color:black
+}
+
+
+.prev,
+.next,
+.datepicker-switch {
+    border-radius: 0 !important;
+    padding: 20px 10px !important;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: black !important;
+    opacity: 0.8
+}
+
+.prev:hover,
+.next:hover,
+.datepicker-switch:hover {
+    background-color: inherit !important;
+    opacity: 1
+}
+
+.cell {
+    border: 1px solid #BDBDBD;
+    margin: 2px;
+    cursor: pointer
+}
+
+.cell:hover {
+    border: 1px solid #3fbbc0
+}
+
+.cell.select {
+    background-color: #3fbbc0;
+    color: #fff
+}
+
+.fa-calendar {
+  color: #3fbbc0; 
+  font-size: 20px;
+  padding-left: 40px; 
+  padding-right: 15px;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.fa-user-md {
+  color: #3fbbc0; 
+  font-size: 20px;
+  padding-left: 40px; 
+  padding-right: 15px;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.checkBtn {
+  float: right;
+  padding-right: 50px;
+  padding-top: 25px;
+  cursor: pointer;
+}
+
+/* datepicker end */
+
+/* disable*/
+.disable-div {
+    pointer-events: none;
+    filter: blur(0.9px);
+}
+</style>
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+      <div class="align-items-center d-none d-md-flex">
+        <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
+      </div>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-phone"></i> Call us now +91 9741220773
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <a href="{% url 'index' %}" class="logo me-auto"><img src="{% static '/img/logo.png' %}" alt=""><span style="color: rgb(0, 0, 0);">NI</span>YU<span style="color: black;">KT</span>HI</a>
+   
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'backToHome' Phone=Phone %}">Home</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'myAppointment' phone=Phone %}">My Appointment</a></li>
+          <li><a class="nav-link scrollto" href="#counts">Make An Appointment</a></li>
+          <!-- <li class="dropdown"><a href="#"><span><i class="fa fa-user-circle"></i></span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">QR Code</a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>  -->
+          <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+      
+      <!-- <a href="{% url 'login' %}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span> <i class="fa fa-user-circle"></i> </a> -->
+        <!-- <i class="fa fa-user-circle"></i> -->
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+   <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol  id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1  -->
+        <div class="carousel-item active" style="background-image:url({% static '/img/slide/slide-1.jpg' %});">
+          <div class="container">
+            <h2>Welcome to <span>Niyukthi</span></h2>
+            <p>With thousands of verified and experienced doctors near you, skip the waiting room and get doctor appointment schedule in a jiffy.</p>
+            <a href="#about" class="btn-get-started scrollto">Read More</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url({% static '/img/slide/slide-2.jpg' %});">
+          <div class="container">
+            <h2>Art Buchwald</h2>
+            <p>Whether it’s the best of times or the worst of times, it’s the only time we’ve got.</p>
+            <a href="#about" class="btn-get-started scrollto">Read More</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image:url({% static '/img/slide/slide-3.jpg' %});">
+          <div class="container">
+            <h2>Richard Lamm</h2>
+            <p>Universal coverage, not medical technology, is the foundation of any caring health care system.</p>
+            <a href="#about" class="btn-get-started scrollto">Read More</a>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <main id="main">
+
+     <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+        
+        <div class="section-title">
+          <h2>Click the Doctors Name for Appointment</h2>
+        </div>
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+             <h4 class="title">Dermatology</h4>
+             {% for derm in Dermatology %}
+           
+
+             <a id="dermname" data-name="{{derm}}" data-value="Dermatology" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{derm}}</a>
+         
+     
+              
+             {% endfor %}
+             <!-- <a href="#about" class="btn-get-started scrollto">Read More</a> -->
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+              <h4 class="title">ENT</h4>
+            {% for en in ENT %}
+             <a id="dermname" data-name="{{en}}" data-value="ENT" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{en}}</a>
+             {% endfor %}
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+              <h4 class="title">General Medicine</h4>
+              {% for gm in General_Medicine %}
+        <a id="dermname" data-name="{{gm}}"  data-value="General Medicine" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{gm}}</a>
+             {% endfor %}
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+              <h4 class="title">General Surgery</h4>
+             {% for gs in General_Surgery %}
+             <a id="dermname" data-name="{{gs}}" data-value="General Surgery" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{gs}}</a>
+             {% endfor %}
+            </div>
+          </div>
+       
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+              <h4 class="title">Ophthalmology</h4>
+            {% for opt in Ophthalmology %}
+             <a id="dermname" data-name="{{opt}}" data-value="Ophthalmology" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{opt}}</a>
+             {% endfor %}
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+              <h4 class="title">Orthopedics</h4>
+             {% for orth in Orthopedics %}
+             <a id="dermname" data-name="{{orth}}" data-value="Orthopedics" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{orth}}</a>
+             {% endfor %}
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+              <h4 class="title">Paediatrics</h4>
+             {% for paed in Paediatrics %}
+             <a id="dermname" data-name="{{paed}}" data-value="Paediatrics" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{paed}}</a>
+             {% endfor %}
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" style="padding-right: 16px;">
+            <div class="count-box">
+              <h4 class="title" >Psychiatry</h4>
+             {% for psy in Psychiatry %}
+            <a id="dermname" data-name="{{psy}}" data-value="Psychiatry" onclick="document.getElementById('id01').style.display='block' " class="btn-get-started scrollto building-link">{{psy}}</a>
+             {% endfor %}
+            </div>
+          </div>
+        </div>
+
+     </div>
+        
+      </div>
+    </section><!-- End Counts Section -->
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>Niyukthi</h3>
+              <p>
+                Mangalore Institute of Technology and Engineering <br>
+                Mangalore,D.K , Karnataka,India<br><br>
+                <strong>Phone:</strong> +91 9741220773<br>
+                <strong>Email:</strong> niyukthi4@gmail.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'backToHome' Phone=Phone %}#hero ">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'backToHome' Phone=Phone %}#about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'backToHome' Phone=Phone %}#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'backToHome'  Phone=Phone %}#departments">Departments</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'backToHome' Phone=Phone %}#doctors">Doctors</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+          <!--   <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul> -->
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Niyukthi</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
+        Designed by <a href="#">S<sup>3</sup>V</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+<!-- modal -->
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+    <form class="modal-content animate" action="/action_page.php">
+      <div class="container1">
+        <!-- <br>
+        <br> -->
+        <i class="fa fa-user-md" aria-hidden="true"></i><h4 id="building-name" style="font-size: 20px; display: inline;" ></h4>
+       <br> 
+     <!--  <p id="building-name" style="font-size: 20px; display: inline;"><i class="fa fa-user-md " aria-hidden="true" style=" color: #3fbbc0;  padding-left: 50px; padding-right: 15px;"></i><b>   </b></p> -->
+     <i class="fa fa-calendar " aria-hidden="true"></i>
+     <input type="text" id="dp1" class="datepicker" placeholder="Pick Date" name="date" readonly required>
+      <a href="javascript:check()" class="checkBtn">Check</a>
+      <!-- <div class="card-header bg-dark"> -->
+        <div class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1">
+           
+           
+         </div>
+         <br>
+         <br>
+    <!-- </div> -->
+    <div id="dem" class="card-body p-3 p-sm-5">
+        <div class="row text-center mx-0" >
+            <div class="col-md-2 col-4 my-1 px-2" id="print0">
+
+            </div>
+            <div class="col-md-2 col-4 my-1 px-2" id="print1">
+
+            </div>
+            <div class="col-md-2 col-4 my-1 px-2" id="print2">
+
+            </div>
+            <div class="col-md-2 col-4 my-1 px-2" id="print3">
+
+            </div>
+            <div class="col-md-2 col-4 my-1 px-2" id="print4">
+
+            </div>
+            <div class="col-md-2 col-4 my-1 px-2" id="print5">
+
+            </div>
+      
+        </div>
+        <div class="row text-center mx-0">
+            <div class="col-md-2 col-4 my-1 px-2" id="print6">
+
+            </div>   
+            <div class="col-md-2 col-4 my-1 px-2" id="print7">
+
+            </div>   
+            <div class="col-md-2 col-4 my-1 px-2" id="print8">
+
+            </div>   
+            <div class="col-md-2 col-4 my-1 px-2" id="print9">
+
+            </div>
+           
+        </div> 
+   
+    </div>
+<!-- 
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <label><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+        <input type="checkbox"> Remember me
+        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+
+        <div class="clearfix">
+        <center > <a type="submit" class="signupbtn"  style="color: #fff;" onclick="appointment();"> Book</a></center> 
+        
+       <center><a type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="color: #fff;">Cancel</a></center>   
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static '/vendor/aos/aos.js' %}"></script>
+  <script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static '/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static '/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static '/vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static '/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static '/js/main.js' %}"></script>
+
+<!--close the modal by just clicking outside of the modal-->
+<script>
+  var modal = document.getElementById('id01');
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      name = document.getElementById("dername").value;
+      
+      modal.style.display = "none";
+    }
+  }
+
+</script>
+
+
+   <!-- JQUERY MODAL -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script>
+      
+    var selected
+    var a = new Array();
+    var name ;
+    var dname;
+     var d;
+     var date;
+     var day,month,year;
+$('.building-link').click(function(){
+    
+    $('#building-name').html($(this).data('name'));
+    // $('#building-description').html($(this).data('description'));
+    // $('#building-img').src($(this).data('img'));
+    name =$(this).data('name');
+    dname=$(this).data('value');
+});
+    $(document).ready(function(){
+;
+
+$('.datepicker').datepicker({
+format: 'dd-mm-yyyy',
+autoclose: true,
+startDate: '0d'
+});
+
+$('.cell').click(function(){
+$('.cell').removeClass('select');
+$(this).addClass('select');
+});
+});
+
+ var firebaseConfig ={
+                  apiKey: "AIzaSyDdheLeY7Yw-Mam3w2IKnbvgd1Hh7LUFdk",
+                  authDomain: "niyukthi-be5f6.firebaseapp.com",
+                  projectId: "niyukthi-be5f6",
+                  databaseURL: "https://niyukthi-be5f6-default-rtdb.firebaseio.com/",
+                  storageBucket: "niyukthi-be5f6.appspot.com",
+                  messagingSenderId: "700335121802",
+                  appId: "1:700335121802:web:5971b337078f7060139473",
+                  measurementId: "G-LS4WN48MDJ"
+      }
+      firebase.initializeApp(firebaseConfig);
+      function check() {
+      
+    
+         date =document.getElementById('dp1').value;
+        console.log(date,name);
+        var str= date.split('-');
+        day = parseInt(str[0]);
+        month = parseInt(str[1]);
+        year = str[2];
+         console.log(day,month,year);
+         var ref = firebase.database().ref("Availability/"+year+"/"+month+"/"+day+"/"+dname);
+         
+      ref.on('value', function(snapshot) {
+      // snapshot.forEach(function(childSnapshot) {
+      if (snapshot.hasChild(name)) {
+        
+        var t =  snapshot.child(name+"/"+"SlotStart").val();
+        var times = t.split(":");
+        var dur =  snapshot.child(name+"/"+"Duration").val();
+        var hours = parseInt(times[0])
+        var minutes = parseInt(times[1])
+        console.log(times,hours,minutes);
+       if (String(hours).length == 1){
+                var st= "0"+hours + ":" + minutes+"0";
+                 st =timeslot(st);
+              a[0] = st;
+          }
+          else{
+                   var st= hours + ":" + minutes+"0";
+                 st =timeslot(st);
+              a[0] = st;
+          }
+       for (var i = 1; i < 10; i++) {
+
+          if ((minutes < 45) && (hours < 12)){
+               minutes+= parseInt(dur);
+               if (String(hours).length == 1){
+                  var st ="0"+ hours + ":" + minutes;
+              st =timeslot(st);
+              a[i] = st;
+               }
+              else{
+                var st = hours + ":" + minutes;
+              st =timeslot(st);
+          
+              a[i] = st;
+              }
+          }
+          else if(hours>12){
+             hours = 0;
+             hours += 1;
+             st = hours + ":" + minutes;
+              st =timeslot(st);
+
+              a[i] = st;
+          }
+              else{
+            hours += 1;
+           minutes = 0;
+             st = hours + ":" + "00";
+              st =timeslot(st);
+                   
+              a[i] = st;
+           }
+       }
+        
+        // snapshot.child(name).forEach(function(childSnapshot) {
+        // // console.log(typeof(childSnapshot.key));
+        //     a[i]=childSnapshot.key;
+        //     i++;
+           
+
+        //     // for (var i = 0; i < 10; i++) {
+        //     //   slots[i]=childSnapshot.key;
+        //     // }
+        //     // slots.sort();
+           
+        // });
+      
+
+         //    var sort = function(a){
+         //          var sa = [],
+         //        d = new Date(),
+         //        ds = d.toDateString();
+
+         //    for(var i = 0; i < a.length; i++){
+         //      d = new Date(ds + ' ' + a[i]);
+         //      sa.push(d);
+         //    }
+
+         //    sa.sort(function(a, b){return a.getTime() - b.getTime();})
+         //    return sa;
+         //    }
+
+         //    console.log("After sort");
+          
+   
+            // document.write("<div class='col-md-2 col-4 my-1 px-2'>");
+            // document.write("<div class='cell py-1'>");
+            // document.write(a[i]);
+            // document.write("</div></div>");
+                
+            // var div=["<div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[0]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[1]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[2]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[3]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[4]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[5]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[6]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[7]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[8]+"</div> </div> ",
+            // " <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'>"+a[9]+"</div> </div> "]
+            
+       
+            // var div = "<div class='col-md-2 col-4 my-1 px-2' id='slotSelect'><div class='cell py-1' id='slot0' data-slot = "+a[0]+">"+a[0]+"</div> </div>" + "<div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot1' data-slot = "+a[1]+">"+a[1]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot2' data-slot = "+a[2]+">"+a[2]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot3' data-slot = "+a[3]+">"+a[3]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot4' data-slot = "+a[4]+">"+a[4]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot5' data-slot = "+a[5]+">"+a[5]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot6' data-slot = "+a[6]+">"+a[6]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot7' data-slot = "+a[7]+">"+a[7]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot8' data-slot = "+a[8]+">"+a[8]+"</div> </div> "+" <div class='col-md-2 col-4 my-1 px-2'><div class='cell py-1'  id='slot9' data-slot = "+a[9]+">"+a[9]+"</div> </div> ";
+            var div0="<div class='cell py-1' id='slot0' data-slot = "+a[0]+">"+a[0]+"</div> ";
+            var div1 = "<div class='cell py-1'  id='slot1' data-slot = "+a[1]+">"+a[1]+"</div> ";
+            var div2 = "<div class='cell py-1'  id='slot2' data-slot = "+a[2]+">"+a[2]+"</div>  ";
+            var div3 = " <div class='cell py-1'  id='slot3' data-slot = "+a[3]+">"+a[3]+"</div> ";
+            var div4 ="<div class='cell py-1'  id='slot4' data-slot = "+a[4]+">"+a[4]+"</div>";
+            var div5=" <div class='cell py-1'  id='slot5' data-slot = "+a[5]+">"+a[5]+"</div> ";
+            var div6 ="<div class='cell py-1'  id='slot6' data-slot = "+a[6]+">"+a[6]+"</div> ";
+            var div7 ="<div class='cell py-1'  id='slot7' data-slot = "+a[7]+">"+a[7]+"</div> ";
+
+           var div8 ="<div class='cell py-1'  id='slot8' data-slot = "+a[8]+">"+a[8]+"</div>";
+           var div9= "<div class='cell py-1'  id='slot9' data-slot = "+a[9]+">"+a[9]+"</div>";
+
+          var ref1 = firebase.database().ref("Availability/"+year+"/"+month+"/"+day+"/"+dname+"/"+name+"/Slots");
+         ref1.on('value', function(snapshot) {
+
+            if (snapshot.hasChild(a[0])) {
+               // var div00="<div class='cell py-1' id='slot0' data-slot = "+a[0]+" disabled>"+a[0]+"</div> ";
+          // $("#slot0").val("<div class='cell py-1' id='slot0' data-slot = "+a[0]+" disabled>"+a[0]+"</div>")
+          document.getElementById('print0').innerHTML=div0;
+
+          $(document).ready(function() {
+                $("#slot0").addClass("disable-div");
+            });
+          // $("#slot0").attr("disabled", "disabled").on('click');
+
+         
+              
+            }
+            else{
+          document.getElementById('print0').innerHTML=div0;
+
+            }
+           if (snapshot.hasChild(a[1])) {
+            document.getElementById('print1').innerHTML=div1;
+
+          $(document).ready(function() {
+                $("#slot1").addClass("disable-div");
+            });
+              
+            }
+            else{
+          document.getElementById('print1').innerHTML=div1;
+
+            }
+          if (snapshot.hasChild(a[2])) {
+              document.getElementById('print2').innerHTML=div2;
+          $(document).ready(function() {
+                $("#slot2").addClass("disable-div");
+            });
+           
+              
+            }
+            else{
+          document.getElementById('print2').innerHTML=div2;
+              
+            }
+
+            if (snapshot.hasChild(a[3])) {
+             document.getElementById('print3').innerHTML=div3;
+
+          $(document).ready(function() {
+                $("#slot3").addClass("disable-div");
+            });
+           
+              
+            }
+            else{
+          document.getElementById('print3').innerHTML=div3;
+              
+            }
+                 if (snapshot.hasChild(a[4])) {
+             document.getElementById('print4').innerHTML=div4;
+
+          $(document).ready(function() {
+                $("#slot4").addClass("disable-div");
+            });
+           
+              
+            }
+            else{
+          document.getElementById('print4').innerHTML=div4;
+              
+            }
+
+          if (snapshot.hasChild(a[5])) {
+              document.getElementById('print5').innerHTML=div5;
+
+          $(document).ready(function() {
+                $("#slot5").addClass("disable-div");
+            });
+           
+              
+            }
+            else{
+          document.getElementById('print5').innerHTML=div5;
+              
+            }
+
+         if (snapshot.hasChild(a[6])) {
+             document.getElementById('print6').innerHTML=div6;
+
+          $(document).ready(function() {
+                $("#slot6").addClass("disable-div");
+            });
+           
+              
+            }
+            else{
+          document.getElementById('print6').innerHTML=div6;
+              
+            }
+
+        if (snapshot.hasChild(a[7])) {
+             document.getElementById('print7').innerHTML=div7;
+
+          $(document).ready(function() {
+                $("#slot7").addClass("disable-div");
+            });
+           
+              
+            }
+            else{
+            
+
+          document.getElementById('print7').innerHTML=div7;
+              
+            }
+
+        if (snapshot.hasChild(a[8])) {
+        document.getElementById('print8').innerHTML=div8;
+
+          $(document).ready(function() {
+                $("#slot8").addClass("disable-div");
+            });
+           
+              
+            }
+            else{
+          document.getElementById('print8').innerHTML=div8;
+              
+            }
+       if (snapshot.hasChild(a[9])) {
+              document.getElementById('print9').innerHTML=div9;
+          $(document).ready(function() {
+                $("#slot9").addClass("disable-div");
+            });
+              
+            }
+            else{
+          document.getElementById('print9').innerHTML=div9;
+              
+            }
+         });
+        // document.getElementById('print0').innerHTML=div0;
+        // document.getElementById('print1').innerHTML=div1;
+        //   document.getElementById('print2').innerHTML=div2;
+        //   document.getElementById('print3').innerHTML=div3;
+        //   document.getElementById('print4').innerHTML=div4;
+        //   document.getElementById('print5').innerHTML=div5;
+        //   document.getElementById('print6').innerHTML=div6;
+        //   document.getElementById('print7').innerHTML=div7;
+        //   document.getElementById('print8').innerHTML=div8;
+        //   document.getElementById('print9').innerHTML=div9;
+
+         $("#slot0").click(function(){
+            selected = $('#slot0').data('slot');
+            $("#slot0").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+         $("#slot1").click(function(){
+            selected = $('#slot1').data('slot');
+            $("#slot1").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+          $("#slot2").click(function(){
+            selected = $('#slot2').data('slot');
+            $("#slot2").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+
+       $("#slot3").click(function(){
+            selected = $('#slot3').data('slot');
+            $("#slot3").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+         $("#slot4").click(function(){
+            selected = $('#slot4').data('slot');
+            $("#slot4").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+          $("#slot5").click(function(){
+            selected = $('#slot5').data('slot');
+            $("#slot5").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+
+         $("#slot6").click(function(){
+            selected = $('#slot6').data('slot');
+            $("#slot6").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+         $("#slot7").click(function(){
+            selected = $('#slot7').data('slot');
+            $("#slot7").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+          $("#slot8").click(function(){
+            selected = $('#slot8').data('slot');
+            $("#slot8").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+          $("#slot9").click(function(){
+            selected = $('#slot9').data('slot');
+            $("#slot9").css({
+                "background-color": "#3fbbc0",
+                "color": "white"
+            });
+        });
+        
+      }else{
+       document.getElementById('dem').innerHTML="Doctor not available on "+date;
+        //      document.getElementById('id01').style.display='none';
+        // window.location.reload();
+          window.setInterval('refresh()', 5000); 
+      }
+    
+
+   
+});
+// var ref = firebase.database().ref("Doctors");
+
+// ref.on("value", function(snapshot) {
+//    console.log(snapshot.val());
+// }, function (error) {
+//    console.log("Error: " + error.code);
+// });
+         // var c = ref.hasChild(name);
+
+         // console.log(c);
+         // ref.once("value").then(function(snapshot) {
+         //     var a = snapshot.child(name).exists(); 
+         //     var n = snapshot.hasChild(name);
+         //     d =snapshot.child(name).key;
+         //     console.log(d,n,a);
+         //    });
+          // ref.once('value', function(snapshot) {
+          //       d=snapshot.hasChild(name);
+          //       var c =snapshot.child(name).key;
+          //       console.log(d,c);
+          // });
+
+         
+    
+      }
+      // $('.cancelbtn').click(function() {
+      //    window.setInterval('refresh()', 500); 
+      // });
+      function timeslot(time) {
+
+          var time2 = time.toString ().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) ;
+
+           if (time2.length > 1) { // If time format correct
+             time2 = time2.slice (1);  // Remove full string match value
+             time2[5] = +time2[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+             time2[0] = +time2[0] % 12 || 12; // Adjust hours
+           }
+
+           return  time2.join('') ;
+}
+ function refresh() {
+        window .location.reload();
+    }
+      function appointment() { 
+        // console.log(selected);
+        var phone ={{Phone}} ;
+          var ref = firebase.database().ref("Availability/"+year+"/"+month+"/"+day+"/"+dname+"/"+name).child("Slots").child(selected).set(phone);
+         var ref1=firebase.database().ref("User/"+phone).child("Appointment/"+year+"/"+month+"/"+day+"/"+dname+"/"+name).child("Date").push(date);
+         var ref2= firebase.database().ref("User/"+phone).child("Appointment/"+year+"/"+month+"/"+day+"/"+dname+"/"+name).child("Slot").push(selected);
+                  
+          // alert("Success");
+
+          document.getElementById('id01').style.display='none';
+       
+          
+        window.location.reload(); 
+         
+      }
+</script>
+</body>
+
+</html>
